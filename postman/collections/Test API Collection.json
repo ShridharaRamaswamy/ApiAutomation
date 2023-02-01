@@ -1,14 +1,40 @@
 {
 	"info": {
-		"_postman_id": "f665783f-12bc-4ccf-8159-bec19eee9650",
+		"_postman_id": "199d5b38-122d-491c-8ea9-a2b4b1540e4b",
 		"name": "Test API Collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_uid": "18788930-f665783f-12bc-4ccf-8159-bec19eee9650"
+		"_uid": "18788930-199d5b38-122d-491c-8ea9-a2b4b1540e4b"
 	},
 	"item": [
 		{
 			"name": "Create User",
-			"id": "72cc709c-ed25-4150-bafd-51f18167f0ae",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5ef37a05-9995-4e30-a0ef-38632bc192ce",
+						"exec": [
+							"pm.test(\"status code 200\",function(){\r",
+							"    pm.response.to.have.status(201)\r",
+							"})\r",
+							"\r",
+							"let jsonData = pm.response.json();\r",
+							"pm.test(\"Verify UserId is available\", function(){\r",
+							"    pm.expect(jsonData.id).not.equal(null);\r",
+							"})\r",
+							"\r",
+							"\r",
+							"\r",
+							"console.log(jsonData.id)\r",
+							"let ID = jsonData.id\r",
+							"console.log(ID)\r",
+							"pm.environment.set(\"userid\",ID)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "a2464742-0ddf-4803-b9a2-bfba8d205125",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -27,7 +53,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"name\": \"{{name}}\",\r\n\"email\": \"{{email}}\",\r\n\"gender\": \"{{gender}}\",\r\n\"status\": \"{{status}}\"\r\n\r\n}",
+					"raw": "{\r\n\"name\": \"{{name}}\",\r\n\"email\": \"shritest@test6.com\",\r\n\"gender\": \"{{gender}}\",\r\n\"status\": \"{{status}}\"\r\n\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -52,7 +78,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "6301e946-a7bd-4783-bf7e-fbed3a16fae3",
+						"id": "bdcc2cbe-e993-4530-86ef-41f34aa5b3cf",
 						"exec": [
 							"pm.test(\"status code 200\",function(){\r",
 							"    pm.response.to.have.status(200)\r",
@@ -70,7 +96,7 @@
 					}
 				}
 			],
-			"id": "2f98adb1-bc76-4939-aa9a-3c3fba29b7f2",
+			"id": "054095b3-6130-40cc-8587-246bfca1ab5f",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -115,7 +141,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "c1b689a5-6861-4382-b2a2-7156fb8a61b7",
+						"id": "2f7f30b3-ba4b-44e2-8c3a-1685a78455f2",
 						"exec": [
 							"pm.test(\"status code 200\",function(){\r",
 							"    pm.response.to.have.status(200)\r",
@@ -131,7 +157,7 @@
 					}
 				}
 			],
-			"id": "97a0d14b-87ac-4572-9950-89398cf98fbe",
+			"id": "b87fcb6e-e28b-4cce-a10d-6717220003dd",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -176,7 +202,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "8eaf509a-16c1-42df-874f-bf86154b2411",
+						"id": "8e07570a-06aa-48d6-94e0-15bae807ab4d",
 						"exec": [
 							"pm.test(\"status code 200\",function(){\r",
 							"    pm.response.to.have.status(204)\r",
@@ -187,7 +213,7 @@
 					}
 				}
 			],
-			"id": "5b2e19cb-ae95-4479-9f2c-3697a107182c",
+			"id": "cd084476-2c19-4f3d-aadb-3155a929c098",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -216,38 +242,6 @@
 				}
 			},
 			"response": []
-		}
-	],
-	"auth": {
-		"type": "bearer",
-		"bearer": [
-			{
-				"key": "token",
-				"value": "{{token}}",
-				"type": "string"
-			}
-		]
-	},
-	"event": [
-		{
-			"listen": "prerequest",
-			"script": {
-				"id": "dbae0122-d669-4b8e-9288-a4a38734cc8b",
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		},
-		{
-			"listen": "test",
-			"script": {
-				"id": "bad4dfff-f7b0-4d44-88db-11d460e12e28",
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
 		}
 	]
 }
