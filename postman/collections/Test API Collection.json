@@ -53,7 +53,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"name\": \"{{name}}\",\r\n\"email\": \"{{email}}\",\r\n\"gender\": \"{{gender}}\",\r\n\"status\": \"{{status}}\"\r\n\r\n}",
+					"raw": "{\r\n\"name\": \"{{name}}\",\r\n\"email\": \"shritest@test3.com\",\r\n\"gender\": \"{{gender}}\",\r\n\"status\": \"{{status}}\"\r\n\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
