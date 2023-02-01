@@ -1,0 +1,279 @@
+{
+	"info": {
+		"_postman_id": "f665783f-12bc-4ccf-8159-bec19eee9650",
+		"name": "Test API Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "18788930-f665783f-12bc-4ccf-8159-bec19eee9650"
+	},
+	"item": [
+		{
+			"name": "Create User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "83d77825-d5fc-4105-8db1-d6fa280be7f6",
+						"exec": [
+							"pm.test(\"status code 200\",function(){\r",
+							"    pm.response.to.have.status(201)\r",
+							"})\r",
+							"\r",
+							"let jsonData = pm.response.json();\r",
+							"pm.test(\"Verify UserId is available\", function(){\r",
+							"    pm.expect(jsonData.id).not.equal(null);\r",
+							"})\r",
+							"\r",
+							"\r",
+							"\r",
+							"console.log(jsonData.id)\r",
+							"let ID = jsonData.id\r",
+							"console.log(ID)\r",
+							"pm.environment.set(\"userid\",ID)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "72cc709c-ed25-4150-bafd-51f18167f0ae",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\": \"{{name}}\",\r\n\"email\": \"{{email}}\",\r\n\"gender\": \"{{gender}}\",\r\n\"status\": \"{{status}}\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseUrl}}/users",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6301e946-a7bd-4783-bf7e-fbed3a16fae3",
+						"exec": [
+							"pm.test(\"status code 200\",function(){\r",
+							"    pm.response.to.have.status(200)\r",
+							"})\r",
+							"\r",
+							"let jsonData = pm.response.json();\r",
+							"pm.test(\"Verify UserId is available\", function(){\r",
+							"    pm.expect(jsonData.id).not.equal(null);\r",
+							"})\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "2f98adb1-bc76-4939-aa9a-3c3fba29b7f2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseUrl}}/users/{{userid}}",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"users",
+						"{{userid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c1b689a5-6861-4382-b2a2-7156fb8a61b7",
+						"exec": [
+							"pm.test(\"status code 200\",function(){\r",
+							"    pm.response.to.have.status(200)\r",
+							"})\r",
+							"\r",
+							"let jsonData = pm.response.json();\r",
+							"pm.test(\"Verify UserId is available\", function(){\r",
+							"    pm.expect(jsonData.name).equal(pm.environment.get(\"updatename\"));\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "97a0d14b-87ac-4572-9950-89398cf98fbe",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\": \"{{updatename}}\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseUrl}}/users/{{userid}}",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"users",
+						"{{userid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8eaf509a-16c1-42df-874f-bf86154b2411",
+						"exec": [
+							"pm.test(\"status code 200\",function(){\r",
+							"    pm.response.to.have.status(204)\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "5b2e19cb-ae95-4479-9f2c-3697a107182c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BaseUrl}}/users/{{userid}}",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"users",
+						"{{userid}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "dbae0122-d669-4b8e-9288-a4a38734cc8b",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "bad4dfff-f7b0-4d44-88db-11d460e12e28",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
