@@ -14,11 +14,11 @@ jobs:
         run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
       - name: Run API tests
         run: |
-          postman collection run "${{ github.workspace }}/postman/collections/Test API Collection.json" -e "${{ github.workspace }}/postman/collections/TestAPIEnv.postman_environment.json" --integration-id "132242-${{ github.run_id }}"
+          postman collection run "${{ github.workspace }}/postman/collections/Test API Collection.json" -e "${{ github.workspace }}/postman/collections/TestAPIEnv.json" --integration-id "132242-${{ github.run_id }}"
       - name: Install NewMan
         run: npm install -g newman
       - name: Install Reporter
         run: npm install -g newman-reporter-htmlextra
       - name: Run collection and generate report
-        run: newman run "${{ github.workspace }}/postman/collections/Test API Collection.json?apikey={{secrets.POSTMAN_API_KEY}}" -e "${{ github.workspace }}/postman/collections/TestAPIEnv.postman_environment.json?apikey={{secrets.POSTMAN_API_KEY}}" –r "cli,html"
+        run: newman run "${{ github.workspace }}/postman/collections/Test API Collection.json?apikey={{secrets.POSTMAN_API_KEY}}" -e "${{ github.workspace }}/postman/collections/TestAPIEnv.json?apikey={{secrets.POSTMAN_API_KEY}}" –r "cli,html"
       
