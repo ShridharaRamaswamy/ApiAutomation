@@ -20,5 +20,5 @@ jobs:
       - name: Install Reporter
         run: npm install -g newman-reporter-htmlextra
       - name: Run collection and generate report
-        run: newman run "${{ github.workspace }}/postman/collections/Test API Collection.json?apikey={{secrets.POSTMAN_API_KEY}}" -e "https://api.getpostman.com/environments/933c01c5-aafd-455d-8d81-e830b1b9e8d3?apikey={{secrets.POSTMAN_API_KEY}}" –r "cli,html"
+        run: newman run "https://api.getpostman.com/collections/94048eb1-5008-491a-99c5-2b317c8ee5b5?apikey={{secrets.POSTMAN_API_KEY}}" -e "https://api.getpostman.com/environments/933c01c5-aafd-455d-8d81-e830b1b9e8d3?apikey={{secrets.POSTMAN_API_KEY}}" –r "cli,html"
       
