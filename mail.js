@@ -14,29 +14,22 @@ async function main() {
         port: 587,
         secure: false, // true for 465, false for other ports
         auth: {
-            user: "YTI-Alert@yokogawa.com", // generated ethereal user
-            pass: "Iwan2send@lerts;", // generated ethereal password
+            user: ${{ secrets.USER }}, // generated ethereal user
+            pass: ${{ secrets.PASS }}, // generated ethereal password
         },
     });
 
     var maillist = [
         "shridhara.ramaswamy@yokogawa.com",
-        "kushbu.mundra@yokogawa.com",
-        "manoj.shivashankar@yokogawa.com",
-        "jomon.mathew@yokogawa.com",
-        "prince.jose@yokogawa.com",
-        "m.krishnan@yokogawa.com",
-        "renganathan.vijayasarathy@yokogawa.com",
-        "harish.arumalla@yokogawa.com"
     ];
 
     var options = {
 
         from: '"YTI-Alert@yokogawa.com', // sender address
         to: maillist, // list of receivers
-        subject: "ELN Automation Suite Report", // Subject line
+        subject: "KBC API Automation Suite Report", // Subject line
         // text: "Hello world?", // plain text body
-        html: "<head> <title>Test Suite Execution Report</title></head><P>Hi Team,<br><br> Please find the attached test execution report for <strong>ELN Automation Suite</strong><br><br>Best Regards,<br>Testing Team</P></head>",// html body
+        html: "<head> <title>API Automation Suite Execution Report</title></head><P>Hi Team,<br><br> Please find the attached test execution report for <strong>KBC API Automation Suite</strong><br><br>Best Regards,<br>Testing Team</P></head>",// html body
         attachments: [
 
             {
