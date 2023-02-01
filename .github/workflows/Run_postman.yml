@@ -14,7 +14,7 @@ jobs:
         run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
       - name: Run API tests
         run: |
-          postman collection run "${{ github.workspace }}/postman/collections/Test API Collection.json" -e "18788930-87193e2c-0f33-4652-b03f-b8e3ad86c18f" --integration-id "132242-${{ github.run_id }}"
+          postman collection run "${{ github.workspace }}/postman/collections/Test API Collection.json" -e "${{ github.workspace }}/postman/collections/TestAPIEnv.json" --integration-id "132242-${{ github.run_id }}"
       - name: Install NewMan
         run: npm install -g newman
       - name: Install Reporter
