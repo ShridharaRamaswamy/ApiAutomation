@@ -8,32 +8,6 @@
 	"item": [
 		{
 			"name": "Create User",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "83d77825-d5fc-4105-8db1-d6fa280be7f6",
-						"exec": [
-							"pm.test(\"status code 200\",function(){\r",
-							"    pm.response.to.have.status(201)\r",
-							"})\r",
-							"\r",
-							"let jsonData = pm.response.json();\r",
-							"pm.test(\"Verify UserId is available\", function(){\r",
-							"    pm.expect(jsonData.id).not.equal(null);\r",
-							"})\r",
-							"\r",
-							"\r",
-							"\r",
-							"console.log(jsonData.id)\r",
-							"let ID = jsonData.id\r",
-							"console.log(ID)\r",
-							"pm.environment.set(\"userid\",ID)"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
 			"id": "72cc709c-ed25-4150-bafd-51f18167f0ae",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -53,7 +27,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"name\": \"{{name}}\",\r\n\"email\": \"shritest@test3.com\",\r\n\"gender\": \"{{gender}}\",\r\n\"status\": \"{{status}}\"\r\n\r\n}",
+					"raw": "{\r\n\"name\": \"{{name}}\",\r\n\"email\": \"{{email}}\",\r\n\"gender\": \"{{gender}}\",\r\n\"status\": \"{{status}}\"\r\n\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
